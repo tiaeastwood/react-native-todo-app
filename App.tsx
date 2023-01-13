@@ -63,6 +63,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
 	container: {
+		flex: 1,
 		backgroundColor: "#fff",
 		alignItems: "center",
 		justifyContent: "center",
@@ -77,6 +78,6 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 		fontSize: 50,
 	},
-	content: { padding: 40, width: "100%" },
-	list: { marginTop: 20 },
+	content: { padding: 40, width: "100%", flex: 1 },
+	list: { marginTop: 20, flex: 1 },
 });

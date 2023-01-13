@@ -1,0 +1,14 @@
+{
+    "games": [
+        {
+            "id": "1",
+            "name": "Azul",
+            "max_players": 4
+        },
+                {
+            "id": "2",
+            "name": "Fire Tower",
+            "max_players": 4
+        }
+    ]
+}

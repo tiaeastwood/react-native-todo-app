@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
 	StyleSheet,
@@ -12,32 +12,87 @@ import Header from "./components/header";
 import TodoItem from "./components/todoItem";
 import AddTodo from "./components/addTodo";
 import { ITodoItem } from "./types";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
-	const [todos, setTodos] = useState<ITodoItem[]>([
-		{ text: "buy coffee", key: "1" },
-		{ text: "create an app", key: "2" },
-		{ text: "play on the Switch", key: "3" },
-	]);
+	const [todos, setTodos] = useState<ITodoItem[]>([]);
 
 	const pressHandler = (key: string) => {
 		// removes the pressed todo from the list & returns new list
 		setTodos((prevTodos) => {
 			return prevTodos.filter((todo) => todo.key !== key);
 		});
+		removeTodo(key);
+	};
+
+	const storeTodo = async (value: ITodoItem) => {
+		try {
+			const jsonValue = JSON.stringify(value);
+			await AsyncStorage.setItem(value.key, jsonValue);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const getTodo = async (key: string) => {
+		try {
+			const jsonValue = await AsyncStorage.getItem(key);
+			return jsonValue != null ? JSON.parse(jsonValue) : null;
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const getAllTodos = async () => {
+		let keys: string[] = [];
+		try {
+			let foundKeys = await AsyncStorage.getAllKeys();
+			keys = [...foundKeys];
+
+			if (keys.length > 0) {
+				let storedTodos: ITodoItem[] = [];
+
+				for (const key of keys) {
+					let foundTodo = await getTodo(key);
+					console.log("this is a todo -->", foundTodo);
+					storedTodos.push(foundTodo);
+				}
+				console.log("storedTodos -->", storedTodos);
+				setTodos([...todos, ...storedTodos]);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const removeTodo = async (key: string) => {
+		try {
+			await AsyncStorage.removeItem(key);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const submitHandler = (text: string) => {
 		if (text.length > 3) {
+			let newTodo = {
+				text: text,
+				key: Math.random().toString(),
+			};
 			setTodos((prevTodos) => {
-				return [{ text: text, key: Math.random().toString() }, ...prevTodos];
+				return [newTodo, ...prevTodos];
 			});
+			storeTodo(newTodo);
 		} else {
 			Alert.alert("Oops!", "Todos must be more than 3 characters long", [
 				{ text: "OK", onPress: () => console.log("alert closed") },
 			]);
 		}
 	};
+
+	useEffect(() => {
+		getAllTodos();
+	}, []);
 
 	return (
 		<TouchableWithoutFeedback onPress={() => Keyboard.dismiss}>
@@ -47,14 +102,16 @@ export default function App() {
 
 				<View style={styles.content}>
 					<AddTodo submitHandler={submitHandler} />
-					<View style={styles.list}>
-						<FlatList
-							data={todos}
-							renderItem={({ item }) => (
-								<TodoItem item={item} pressHandler={pressHandler} />
-							)}
-						/>
-					</View>
+					{todos && (
+						<View style={styles.list}>
+							<FlatList
+								data={todos}
+								renderItem={({ item }) => (
+									<TodoItem item={item} pressHandler={pressHandler} />
+								)}
+							/>
+						</View>
+					)}
 				</View>
 			</View>
 		</TouchableWithoutFeedback>

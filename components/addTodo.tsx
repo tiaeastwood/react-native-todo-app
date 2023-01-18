@@ -13,7 +13,7 @@ interface IAddTodoProps {
 }
 
 const AddTodo = ({ submitHandler }: IAddTodoProps) => {
-	const [text, setText] = useState("");
+	const [text, setText] = useState<string>("");
 
 	const changeHandler = (val: string) => {
 		setText(val);

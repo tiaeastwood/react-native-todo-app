@@ -133,6 +133,7 @@ exports[`<App /> renders correctly 1`] = `
         renderItem={[Function]}
         scrollEventThrottle={50}
         stickyHeaderIndices={Array []}
+        testID="flatlist"
         viewabilityConfigCallbackPairs={Array []}
       >
         <View />

@@ -103,6 +103,7 @@ export default function App() {
 					{todos && (
 						<View style={styles.list}>
 							<FlatList
+								testID="flatlist"
 								data={todos}
 								renderItem={({ item }) => (
 									<TodoItem item={item} pressHandler={pressHandler} />

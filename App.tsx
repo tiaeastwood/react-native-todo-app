@@ -54,10 +54,8 @@ export default function App() {
 
 				for (const key of keys) {
 					let foundTodo = await getTodo(key);
-					console.log("this is a todo -->", foundTodo);
 					storedTodos.push(foundTodo);
 				}
-				console.log("storedTodos -->", storedTodos);
 				setTodos([...todos, ...storedTodos]);
 			}
 		} catch (error) {

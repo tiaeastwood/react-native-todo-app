@@ -8,6 +8,8 @@ When an item is deleted, it is also removed from the async storage.
 - React Native (with Expo)
 - TypeScript
 - [react-native-async-storage](https://react-native-async-storage.github.io/async-storage/)
+- [
+React Native Testing Library](https://callstack.github.io/react-native-testing-library/)
 
 ## To run 
 - ```npm install``` to install dependencies
@@ -17,3 +19,5 @@ When an item is deleted, it is also removed from the async storage.
 - Once running on a device or emulator, you can debug with react-devtools by running ```npm run dev```
 - An application should pop-up, allow it and then open the in-app developer menu to connect.
 - A page will open and if you inspect this with your browser dev tool then you can view your console logs in the console tab.
+
+# Testing

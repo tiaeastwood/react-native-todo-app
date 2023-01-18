@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> renders correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "coral",
+        "display": "flex",
+        "flexDirection": "row",
+        "height": "auto",
+        "justifyContent": "center",
+        "paddingBottom": 10,
+        "paddingTop": 80,
+        "width": "100%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "white",
+          "fontSize": 40,
+        }
+      }
+    >
+      My Todos
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "padding": 40,
+        "width": "100%",
+      }
+    }
+  >
+    <View>
+      <TextInput
+        onChangeText={[Function]}
+        placeholder="new todo..."
+        style={
+          Object {
+            "borderBottomColor": "lightgrey",
+            "borderBottomWidth": 1,
+            "marginBottom": 10,
+            "paddingHorizontal": 8,
+            "paddingVertical": 6,
+          }
+        }
+      />
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "coral",
+            "borderRadius": 4,
+            "elevation": 3,
+            "justifyContent": "center",
+            "paddingHorizontal": 32,
+            "paddingVertical": 12,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "white",
+              "fontSize": 16,
+              "fontWeight": "bold",
+              "letterSpacing": 0.25,
+              "lineHeight": 21,
+            }
+          }
+        >
+          ADD TODO
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "marginTop": 20,
+        }
+      }
+    >
+      <RCTScrollView
+        data={Array []}
+        getItem={[Function]}
+        getItemCount={[Function]}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={50}
+        stickyHeaderIndices={Array []}
+        viewabilityConfigCallbackPairs={Array []}
+      >
+        <View />
+      </RCTScrollView>
+    </View>
+  </View>
+</View>
+`;
